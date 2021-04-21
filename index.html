@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue To Do List</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+    <div id="root">
+        
+        <div class="container">
+            <!-- Logo -->
+            <div class="logo">
+                <img src="https://www.boolean.careers/images/misc/logo.png" alt="Logo">
+            </div>
+
+            <!-- input TODO -->
+            <div class="input-todo">
+                <input v-model="userNewTodo" @keyup.enter="addNewTodo" class="input-font" type="text" placeholder="Nuovo Todo">
+                <button class="input-btn" @click="addNewTodo">Aggiungi</button>
+            </div>
+
+            <!-- TODO list -->
+            <div class="todo-container">
+                <ul v-if="todolist.length > 0" class="todo-list">
+                    <li v-for="(todo, index) in todolist">
+                        {{ todo }}
+                        <span @click="deleteTodo(index)">
+                            <i class="fas fa-times">
+                        </i></span>
+                    </li>
+                </ul>
+                <!-- se non ce nessun todo mostra questo div -->
+                <div v-else>Nessun Todo</div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
